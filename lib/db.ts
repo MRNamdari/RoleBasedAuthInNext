@@ -27,10 +27,10 @@ const users: User[] = [
  */
 export function findUserByCredentials(
   username: unknown,
-  password: unknown
+  password: unknown,
 ): User | undefined {
   return users.find(
-    (user) => user.username === username && user.password === password
+    (user) => user.username === username && user.password === password,
   );
 }
 
@@ -48,5 +48,12 @@ export function findUserByUsername(username: string) {
  */
 export function getAllUsers(): SafeUser[] {
   // Remove passwords for security
-  return users.map(({ password, ...user }) => user);
+  return users.map((user) => {
+    return {
+      id: user.id,
+      username: user.username,
+      name: user.name,
+      role: user.role,
+    };
+  });
 }

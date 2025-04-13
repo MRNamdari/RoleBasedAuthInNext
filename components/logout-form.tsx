@@ -9,7 +9,7 @@ type LogOutFormProps = {
  * Signs out server action using `server-only` signOut function of NextAuth
  * @param formData 
  */
-async function signOutAction(formData: FormData) {
+async function signOutAction(/*formData: FormData*/) {
   "use server";
   await signOut();
 }
