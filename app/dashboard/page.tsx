@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { UserDashboardPage } from "./user-dashboard-page";
 import { AdminDashboardPage } from "./admin-dashboard-page";
 
+export const runtime = "edge";
+
 type DashboardSearchParams = Promise<{
   [key: string]: string | string[] | undefined;
 }>;

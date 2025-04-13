@@ -2,6 +2,8 @@ import LogOutForm from "@/components/logout-form";
 import { auth } from "@/lib/auth";
 import { redirect, RedirectType } from "next/navigation";
 
+export const runtime = "edge";
+
 export default async function LogOutPage() {
   // if user is logged-in return LogoutForm
   const session = await auth();
