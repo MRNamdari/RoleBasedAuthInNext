@@ -17,7 +17,7 @@ The application provides a foundation for managing user sessions and restricting
 ## Features
 
 * **Credentials Authentication:** Users can sign in using their email and password.
-* **Session Management:** Uses JWT-based sessions managed by NextAuth.js..
+* **Session Management:** Uses JWT-based sessions managed by NextAuth.js
 * **Route Protection:** Middleware (`middleware.ts`) protects routes based on authentication status.
 * **Role-Based Access Control (RBAC):** Middleware enforces access to specific routes (e.g., `/dashboard`) based on the user's role stored in the session.
 * **Custom UI:** Includes basic custom pages for log-in, log-out, and example protected pages using Tailwind CSS.
@@ -95,9 +95,7 @@ Here's an overview of the key files and folders involved in the structure and au
 * `app/`: Contains the application routes following the Next.js App Router structure.
     * `api/`: Houses API routes, including:
         * `auth/[...nextauth]/route.ts`: The essential handler that NextAuth.js uses for all its operations (sign-in, sign-out, session management, callbacks, etc.).
-    * `(auth)/`: A common convention for grouping authentication-related pages (like `/signin`, `/register`). The actual path might differ based on implementation.
-    * `/dashboard`: These contain the actual pages intended for logged-in users or specific roles. Access control to these routes is enforced by the middleware based on pathnames.
-    * `layout.tsx`: The root application layout, often containing shared UI elements and potentially context providers.
-    * `page.tsx`: The application's public home page.
+    * `(auth)/`: A common convention for grouping authentication-related pages (like `/login`, `/logout`).
+    * `/dashboard`: This contains the actual page intended for logged-in users or specific roles. Access control to these routes is enforced by the middleware based on pathnames.
 * `auth.ts`: Initializes NextAuth.js using the configuration from `auth.config.ts`. This file exports the `handlers` (GET, POST for the API route), `auth` (for accessing session server-side), `signIn`, and `signOut` functions. It's also where crucial callbacks (`jwt`, `session`) are defined, which are used to enrich the session token with custom data like user roles.
 * `middleware.ts`: This is critical for enforcing route protection. It intercepts incoming requests, uses the `auth` helper to check the user's session status and role, compares these against the requirements for the requested pathname, and redirects unauthenticated users appropriately.
