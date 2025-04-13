@@ -1,3 +1,4 @@
+import { Github } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
@@ -25,14 +26,23 @@ export default function Home() {
         </span>
         <ol className="list-inside list-decimal text-center font-[family-name:var(--font-geist-mono)] text-sm/6 sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
+            Get started by poking{" "}
             <code className="rounded bg-black/[.05] px-1 py-0.5 font-[family-name:var(--font-geist-mono)] font-semibold dark:bg-white/[.06]">
-              app/page.tsx
+              /dashboard
             </code>
             .
           </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
+          <li className="mb-2 tracking-[-.01em]">
+            Only admins can access{" "}
+            <code className="rounded bg-black/[.05] px-1 py-0.5 font-[family-name:var(--font-geist-mono)] font-semibold dark:bg-white/[.06]">
+              /api/getAllUsersInfo
+            </code>
+          </li>
+          <li className="mb-2 tracking-[-.01em]">
+            If logged-in user can access{" "}
+            <code className="rounded bg-black/[.05] px-1 py-0.5 font-[family-name:var(--font-geist-mono)] font-semibold dark:bg-white/[.06]">
+              /api/getUserInfo
+            </code>
           </li>
         </ol>
 
@@ -64,17 +74,11 @@ export default function Home() {
       <footer className="row-start-3 flex flex-wrap items-center justify-center gap-[24px]">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          href="https://github.com/MRNamdari/RoleBasedAuthInNext/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
+          <Github />
           Learn
         </a>
         <a

@@ -88,8 +88,16 @@ Follow these steps to get the project running locally.
     * Try accessing `/dashboard` (should be accessible to logged-in users).
     * Try accessing `/api/getAllUsersInfo` (should only be accessible if a user's role is 'admin'). Logged-in users with the 'user' role should be redirected.
 
-### Building for Production
+## Project Structure Highlights
 
-```bash
-npm run build
-npm run start
+Here's an overview of the key files and folders involved in the structure and authentication logic:
+
+* `app/`: Contains the application routes following the Next.js App Router structure.
+    * `api/`: Houses API routes, including:
+        * `auth/[...nextauth]/route.ts`: The essential handler that NextAuth.js uses for all its operations (sign-in, sign-out, session management, callbacks, etc.).
+    * `(auth)/`: A common convention for grouping authentication-related pages (like `/signin`, `/register`). The actual path might differ based on implementation.
+    * `/dashboard`: These contain the actual pages intended for logged-in users or specific roles. Access control to these routes is enforced by the middleware based on pathnames.
+    * `layout.tsx`: The root application layout, often containing shared UI elements and potentially context providers.
+    * `page.tsx`: The application's public home page.
+* `auth.ts`: Initializes NextAuth.js using the configuration from `auth.config.ts`. This file exports the `handlers` (GET, POST for the API route), `auth` (for accessing session server-side), `signIn`, and `signOut` functions. It's also where crucial callbacks (`jwt`, `session`) are defined, which are used to enrich the session token with custom data like user roles.
+* `middleware.ts`: This is critical for enforcing route protection. It intercepts incoming requests, uses the `auth` helper to check the user's session status and role, compares these against the requirements for the requested pathname, and redirects unauthenticated users appropriately.
