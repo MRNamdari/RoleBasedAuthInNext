@@ -82,6 +82,12 @@ Follow these steps to get the project running locally.
 
 2.  **Sign In:**
     * Navigate to `/login`.
+    * User Samples:
+      
+        | Username | Password | Role |
+        |------------|----------|-----|
+        | admin | admin123 | admin |
+        | user | user123 | user |
     * Navigate to `/logout` to log out.
 
 3.  **Test Access Control:**
